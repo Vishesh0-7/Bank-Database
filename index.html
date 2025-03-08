@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to XYZ Bank</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #f0f2f5;
+        }
+
+        .top-bar {
+            width: 100%;
+            background-color: #1a237e;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .bank-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .login-button {
+            background-color: #ff3366;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .login-button:hover {
+            background-color: #e60000;
+        }
+
+        .hero-section {
+            background: linear-gradient(to right, #1a237e, #283593);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .cta-button {
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .primary-cta {
+            background-color: #ff3366;
+            color: white;
+            border: none;
+        }
+
+        .secondary-cta {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .features-section {
+            padding: 60px 40px;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: #1a237e;
+            margin-bottom: 40px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-title {
+            font-size: 20px;
+            color: #1a237e;
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background-color: #1a237e;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="bank-name">XYZ Bank</div>
+        <div class="nav-links">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        
+        </div>
+    </div>
+
+    <div class="hero-section">
+        <h1 class="hero-title">Welcome to Modern Banking</h1>
+        <p class="hero-subtitle">Experience secure and seamless banking services</p>
+        <div class="cta-buttons">
+            <a href="signup.html" class="cta-button primary-cta">Get Started</a>
+            <a href="login.html" class="cta-button primary-cta">Login</a>
+        </div>
+    </div>
+
+    <div id="about" class="features-section">
+        <h2 class="section-title">About Us</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; color: #666; line-height: 1.6;">
+            XYZ Bank has been a trusted name in the banking industry for over 50 years. Our mission is to provide 
+            secure, innovative, and customer-friendly banking solutions. With over 1 million satisfied customers and 
+            branches across 10 countries, we are committed to empowering your financial future.
+        </p>
+    </div>
+
+    <div id="services" class="features-section">
+        <h2 class="section-title">Our Services</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3 class="feature-title">Deposit Services</h3>
+                <p class="feature-description">Flexible savings and fixed deposit options to help you grow your wealth.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="feature-title">Withdrawal Services</h3>
+                <p class="feature-description">Quick and seamless withdrawal options, online or at ATMs worldwide.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="feature-title">Loans</h3>
+                <p class="feature-description">Affordable personal, home, and business loans with competitive rates.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="feature-title">Secure Transactions</h3>
+                <p class="feature-description">State-of-the-art security measures to protect your financial transactions.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="features-section">
+        <h2 class="section-title">Contact Us</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; color: #666; line-height: 1.6;">
+            Have questions or need support? Reach out to us at:
+        </p>
+        <ul style="text-align: center; list-style: none; margin-top: 20px; color: #1a237e;">
+            <li>Phone: +1-800-XYZ-BANK (+1-800-999-2265)</li>
+            <li>Email: support@xyzbank.com</li>
+            <li>Address: 1234 Finance Lane, Suite 567, New York, NY 10001</li>
+            <li>Working Hours: Mon-Fri: 9:00 AM - 5:00 PM</li>
+        </ul>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="bank-name">XYZ Bank</div>
+            <div class="footer-links">
+                <a href="#privacy" class="footer-link">Privacy Policy</a>
+                <a href="#terms" class="footer-link">Terms of Service</a>
+                <a href="#contact" class="footer-link">Contact Us</a>
+                <a href="#support" class="footer-link">Support</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

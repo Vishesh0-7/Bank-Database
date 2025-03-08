@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Customer Signup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-bar {
+            width: 100%;
+            background-color: #1a237e;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            background-color: #ff3366;
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: #e60000;
+        }
+
+        .signup-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: #1a237e;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .account-info {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.8em;
+        }
+
+        .success {
+            color: green;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <div class="nav-title">XYZ Bank</div>
+        <a href="login.html" class="nav-link">Go to Login</a>
+    </div>
+
+    <!-- Signup Form -->
+    <div class="signup-container">
+        <h2>Create an Account</h2>
+        <form id="signupForm" method="POST" action="signup.php">
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" name="name" required>
+            </div>
+            <div class="form-group">
+                <label>SSN:</label>
+                <input type="text" name="ssn" pattern="\d{9}" required>
+            </div>
+            <div class="form-group">
+                <label>House Number:</label>
+                <input type="text" name="house_no" required>
+            </div>
+            <div class="form-group">
+                <label>Street:</label>
+                <input type="text" name="street" required>
+            </div>
+            <div class="form-group">
+                <label>Zip Code:</label>
+                <input type="text" name="zipcode" pattern="\d{5}" placeholder="Enter your 5-digit Zip Code" required>
+            </div>
+            <div class="form-group">
+                <label>Branch Id:</label>
+                <input type="text" name="branchid" required>
+            </div>
+            <div class="form-group">
+                <label>Account Type:</label>
+                <select id="accountType" name="account_type" required>
+                    <option value="">Select Account Type</option>
+                    <option value="Checkings">Checkings</option>
+                    <option value="Savings">Savings</option>
+                    <option value="Money Market Account">Money Market Account</option>
+                </select>
+            </div>
+            <div class="account-info" id="accountTypeInfo">
+                <!-- Account type details will be dynamically populated here -->
+            </div>
+            <div class="form-group">
+                <label>Initial Deposit:</label>
+                <input type="number" name="initial_deposit" id="initialDeposit" required min="20">
+            </div>
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" name="username" required>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" name="password" required>
+            </div>
+            <div id="errorMessage" class="error"></div>
+            <div id="successMessage" class="success"></div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        const accountTypeInfo = {
+            'Checkings': {
+                description: 'A transactional account for everyday banking needs. Minimum deposit: $20',
+                minDeposit: 20
+            },
+            'Savings': {
+                description: 'A deposit account that earns interest. Minimum deposit: $20',
+                minDeposit: 20
+            },
+            'Money Market Account': {
+                description: 'A high-yield account with market-linked features. Minimum deposit: $500',
+                minDeposit: 500
+            }
+        };
+
+        const accountTypeSelect = document.getElementById('accountType');
+        const accountTypeInfoDiv = document.getElementById('accountTypeInfo');
+        const initialDepositInput = document.getElementById('initialDeposit');
+
+        accountTypeSelect.addEventListener('change', function() {
+            const selectedType = this.value;
+            if (selectedType && accountTypeInfo[selectedType]) {
+                const info = accountTypeInfo[selectedType];
+                accountTypeInfoDiv.innerHTML = `
+                    <strong>Account Details:</strong>
+                    <p>${info.description}</p>
+                `;
+                initialDepositInput.min = info.minDeposit;
+            } else {
+                accountTypeInfoDiv.innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>
